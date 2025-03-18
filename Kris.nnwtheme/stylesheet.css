@@ -54,6 +54,7 @@ pre {
   left: 50%;
   transform: translateX(-55%) translateY(-50%);
   -webkit-user-select: none;
+  user-select: none;
   cursor: default;
 }
 
@@ -197,6 +198,7 @@ pre {
   font-family: "SF Mono", Menlo, "Courier New", Courier, monospace;
   font-size: 0.95em;
   -webkit-hyphens: none;
+  hyphens: none;
 }
 
 pre code {
@@ -225,6 +227,7 @@ pre code {
 .nnw-overflow td,
 .nnw-overflow th {
   -webkit-hyphens: none;
+  hyphens: none;
   word-break: normal;
   border: 1px solid var(--table-cell-border-color);
   border-top: none;
@@ -584,7 +587,7 @@ a.footnote:hover,
   :root {
     color-scheme: light dark;
     font-family: "Avenir-Book", -apple-system-body;
-    font-size: [[font-size]]px;
+    font-size: var(--font-size);
     --primary-accent-color: #086aee;
     --secondary-accent-color: #086aee;
     --block-quote-border-color: rgba(8, 106, 238, 0.75);
@@ -606,7 +609,7 @@ a.footnote:hover,
   }
   body .header {
     font: -apple-system-body;
-    font-size: [[font-size]]px;
+    font-size: var(--font-size);
   }
   body .header a:link,
   body .header a:visited {
@@ -687,6 +690,6 @@ a.footnote:hover,
   }
 
   /* .nnw-overflow table {
-    border: 1px solid var(--accent-color);
-  } */
+border: 1px solid var(--accent-color);
+} */
 }
