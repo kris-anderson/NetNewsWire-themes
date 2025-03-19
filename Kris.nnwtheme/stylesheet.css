@@ -585,6 +585,10 @@ a.footnote:hover,
 
 /* iOS Specific */
 @supports (-webkit-touch-callout: none) {
+  .articleTitle {
+    font-size: 0.9em;
+  }
+
   body {
     margin-top: 3px;
     margin-bottom: 20px;
