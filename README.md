@@ -17,11 +17,7 @@ These themes are crafted with attention to detail, focusing on readability, visu
 
 ## Installation
 
-<div align="center">
-  <a href="netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip">
-    <img alt="Install Theme" src="https://img.shields.io/badge/📦_Install_Theme-blue?style=for-the-badge" width="200">
-  </a>
-</div>
+[Click here to install theme in NetNewsWire](netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
 
 **Note:** The button above works only when clicked from within macOS/iOS with NetNewsWire installed. Alternatively, you can:
 
