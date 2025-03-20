@@ -5,6 +5,9 @@ on:
     tags:
       - "v*" # Triggers on any tag starting with 'v'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,5 +24,3 @@ jobs:
         with:
           files: Kris.nnwtheme.zip
           generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
