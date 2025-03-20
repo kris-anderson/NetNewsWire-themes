@@ -17,14 +17,20 @@ These themes are crafted with attention to detail, focusing on readability, visu
 
 ## Installation
 
-[Click here to install theme in NetNewsWire](netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
-
 **Note:** The button above works only when clicked from within macOS/iOS with NetNewsWire installed. Alternatively, you can:
 
 1. Download [Kris.nnwtheme.zip](https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
 2. Open NetNewsWire
 3. Go to Preferences → Appearance
 4. Click "Add Theme" and select the downloaded theme file
+
+Or you can install directly with this URL:
+
+1. Copy this URL: `netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip`
+2. Paste it into your browser's address bar in a new tab
+3. NetNewsWire will automatically open and install the theme
+
+(GitHub doesn't allow non-http/https URLs to be linked directly, which is why copying and pasting is required)
 
 ## License
 
