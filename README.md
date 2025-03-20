@@ -17,7 +17,7 @@ These themes are crafted with attention to detail, focusing on readability, visu
 
 ## Installation
 
-[Click here to install theme in NetNewsWire](netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
+<a href="netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip">Click here to install theme in NetNewsWire</a>
 
 **Note:** The button above works only when clicked from within macOS/iOS with NetNewsWire installed. Alternatively, you can:
 
