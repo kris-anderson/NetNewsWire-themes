@@ -17,9 +17,7 @@ These themes are crafted with attention to detail, focusing on readability, visu
 
 ## Installation
 
-[![Latest Release](https://img.shields.io/github/v/release/kris-anderson/NetNewsWire-themes?style=flat-square)](https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
-
-[📦 **Install theme**](https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
+[📦 **Install theme**](netnewswire://theme/add?url=https://github.com/kris-anderson/NetNewsWire-themes/releases/latest/download/Kris.nnwtheme.zip)
 
 ## License
 
