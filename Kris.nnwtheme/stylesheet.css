@@ -175,7 +175,7 @@ body > .systemMessage {
 
 .articleBody {
   margin-top: 20px;
-  line-height: 1.6em;
+  line-height: 1.4em;
 }
 
 h1 {
@@ -195,7 +195,7 @@ pre {
 }
 
 pre {
-  line-height: 1.4286em;
+  line-height: 1.4em;
 }
 
 code,
@@ -285,7 +285,7 @@ figure {
 
 figcaption {
   font-size: 14px;
-  line-height: 1.3em;
+  line-height: 1.4em;
 }
 
 sup {
@@ -328,7 +328,7 @@ hr {
     margin: 0 0 1.5em 0;
     padding: 1rem;
     color: #505050;
-    line-height: 1.5em;
+    line-height: 1.4em;
   }
 
   pre {
@@ -350,7 +350,7 @@ hr {
     margin: 0em 0 1.5em 0;
     padding: 1.5em;
     color: rgba(195, 195, 195, 1);
-    line-height: 1.5em;
+    line-height: 1.4em;
   }
 
   pre {
@@ -524,7 +524,7 @@ a.footnote {
   min-width: 1em;
   text-align: center;
   font-size: 0.8em;
-  line-height: 1em;
+  line-height: 1.1em;
   position: relative;
   top: -0.1em;
 }
@@ -586,7 +586,7 @@ a.footnote:hover,
 /* iOS Specific */
 @supports (-webkit-touch-callout: none) {
   .articleTitle {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   body {
@@ -594,7 +594,7 @@ a.footnote:hover,
     margin-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
-    font-size: 1.3em;
+    font-size: 1.4em;
     font-weight: 400;
   }
 
