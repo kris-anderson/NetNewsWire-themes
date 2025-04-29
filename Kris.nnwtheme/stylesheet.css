@@ -175,11 +175,11 @@ body > .systemMessage {
 
 .articleBody {
   margin-top: 20px;
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 h1 {
-  line-height: 1.15em;
+  line-height: 1.5em;
   font-weight: bold;
   padding-bottom: 0;
   margin-bottom: 5px;
@@ -195,7 +195,7 @@ pre {
 }
 
 pre {
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 code,
@@ -285,7 +285,7 @@ figure {
 
 figcaption {
   font-size: 14px;
-  line-height: 1.4em;
+  line-height: 1.5em;
 }
 
 sup {
@@ -328,12 +328,12 @@ hr {
     margin: 0 0 1.5em 0;
     padding: 1rem;
     color: #505050;
-    line-height: 1.4em;
+    line-height: 1.5em;
   }
 
   pre {
     background: color(srgb 0.947 0.947 0.947);
-    line-height: 1.3em;
+    line-height: 1.5em;
   }
 
   p code {
@@ -350,7 +350,7 @@ hr {
     margin: 0em 0 1.5em 0;
     padding: 1.5em;
     color: rgba(195, 195, 195, 1);
-    line-height: 1.4em;
+    line-height: 1.5em;
   }
 
   pre {
@@ -409,7 +409,7 @@ blockquote > *:last-child {
 }
 
 .twitterUsername {
-  line-height: 1.2;
+  line-height: 1.5;
   margin-left: 4px;
   display: inline-block;
   vertical-align: middle;
@@ -524,7 +524,7 @@ a.footnote {
   min-width: 1em;
   text-align: center;
   font-size: 0.8em;
-  line-height: 1.1em;
+  line-height: 1.5em;
   position: relative;
   top: -0.1em;
 }
@@ -586,7 +586,7 @@ a.footnote:hover,
 /* iOS Specific */
 @supports (-webkit-touch-callout: none) {
   .articleTitle {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 
   body {
