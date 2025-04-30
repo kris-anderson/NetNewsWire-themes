@@ -67,8 +67,7 @@ h1 {
 
 code,
 pre {
-  font-family: -apple-system-monospace, "SF Mono", Menlo, "Courier New", Courier,
-    monospace;
+  font-family: -apple-system-monospace, "SF Mono", Menlo, "Courier New", Courier, monospace;
   font-size: 0.95em;
   -webkit-hyphens: none;
   hyphens: none;
@@ -161,8 +160,7 @@ hr {
   padding-bottom: 12px;
   text-align: center;
   margin: auto;
-  font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui,
-    sans-serif;
+  font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
 }
 
 .articleFeedName {
@@ -307,10 +305,7 @@ p code {
   border-right: none;
 }
 
-.nnw-overflow
-  :matches(thead, tbody, tfoot):last-child
-  > tr:last-child
-  :matches(td, th) {
+.nnw-overflow :matches(thead, tbody, tfoot):last-child > tr:last-child :matches(td, th) {
   border-bottom: none;
 }
 
@@ -597,7 +592,9 @@ a.footnote {
 /* Footnote theme styles - light mode */
 .newsfoot-footnote-popover {
   background: #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), 0 3px 6px rgba(0, 0, 0, 0.25);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.5),
+    0 3px 6px rgba(0, 0, 0, 0.25);
   color: black;
   padding: 1px;
 }
@@ -675,8 +672,7 @@ a.footnote:hover,
   }
 
   :root {
-    font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui,
-      sans-serif;
+    font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
     font-size: var(--font-size);
     --primary-accent-color: #086aee;
     --secondary-accent-color: #086aee;
@@ -734,8 +730,7 @@ a.footnote:hover,
     margin-bottom: 64px;
     padding-left: 48px;
     padding-right: 48px;
-    font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui,
-      sans-serif;
+    font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
   }
 
   /* Text size classes */

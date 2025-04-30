@@ -15,12 +15,28 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Zip Kris theme
-        run: zip -r Kris.nnwtheme.zip Kris.nnwtheme
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20" # Updated to newer LTS version
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build themes
+        run: npm run build
+
+      - name: Create theme zip files
+        run: |
+          mkdir -p release-assets
+          for theme_dir in build/*.nnwtheme; do
+            theme_name=$(basename "$theme_dir" .nnwtheme)
+            zip -r "release-assets/${theme_name}.nnwtheme.zip" "$theme_dir"
+          done
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
-          files: Kris.nnwtheme.zip
+          files: release-assets/*.zip
           generate_release_notes: true

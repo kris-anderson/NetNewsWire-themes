@@ -1,0 +1,46 @@
+{
+  "name": "netnewswire-themes",
+  "version": "1.0.0",
+  "description": "Kris Anderson's NetNewsWire Theme Collection",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "start": "gulp",
+    "clean": "rm -rf build/**/*.nnwtheme/stylesheet.css",
+    "format": "prettier --write .",
+    "lint": "eslint --fix .",
+    "preview": "node scripts/preview.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kris-anderson/NetNewsWire-themes.git"
+  },
+  "keywords": [
+    "netnewswire",
+    "theme",
+    "tailwindcss"
+  ],
+  "author": "Kris Anderson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kris-anderson/NetNewsWire-themes/issues"
+  },
+  "homepage": "https://github.com/kris-anderson/NetNewsWire-themes#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "ejs": "^3.1.9",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "fs-extra": "^11.2.0",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "open": "^10.0.3",
+    "path": "^0.12.7",
+    "postcss": "^8.4.35",
+    "prettier": "^3.2.5",
+    "tailwindcss": "^3.4.1",
+    "through2": "^4.0.2"
+  }
+}
