@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/kris-anderson/NetNewsWire-themes#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.17",
+    "autoprefixer": "^10.4.21",
     "ejs": "^3.1.9",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -38,9 +38,10 @@
     "gulp-rename": "^2.0.0",
     "open": "^10.0.3",
     "path": "^0.12.7",
-    "postcss": "^8.4.35",
+    "postcss": "^8.5.3",
+    "postcss-import": "^16.1.0",
     "prettier": "^3.2.5",
-    "tailwindcss": "^3.4.1",
+    "tailwindcss": "^3.4.17",
     "through2": "^4.0.2"
   }
 }

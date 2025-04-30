@@ -1,3 +1,4 @@
+/* tailwindcss */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,8 +15,88 @@
     font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
   }
 
+  /* Headings */
   h1 {
-    @apply font-bold pb-0 mb-[5px];
+    @apply font-bold pb-0 mb-[5px] text-[1.8em];
+  }
+
+  h2 {
+    @apply font-bold text-[1.5em] mt-6 mb-3 text-header;
+  }
+
+  h3 {
+    @apply font-bold text-[1.3em] mt-5 mb-2 text-header;
+  }
+
+  h4 {
+    @apply font-bold text-[1.2em] mt-4 mb-2 text-header;
+  }
+
+  h5 {
+    @apply font-bold text-[1.1em] mt-4 mb-2 text-header;
+  }
+
+  h6 {
+    @apply font-bold text-[1em] mt-4 mb-2 text-header;
+  }
+
+  /* Text formatting */
+  p {
+    @apply my-4 first:mt-0;
+  }
+
+  strong,
+  b {
+    @apply font-bold;
+  }
+
+  em,
+  i {
+    @apply italic;
+  }
+
+  sup,
+  sub {
+    @apply text-[75%] leading-none;
+  }
+
+  sup {
+    @apply align-super;
+  }
+
+  sub {
+    @apply align-sub;
+  }
+
+  /* Lists */
+  ul,
+  ol {
+    @apply my-4 pl-8;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply my-2;
+  }
+
+  /* Definition lists */
+  dl {
+    @apply my-4;
+  }
+
+  dt {
+    @apply font-bold mt-3;
+  }
+
+  dd {
+    @apply ml-6 mb-2;
   }
 
   /* Code blocks */
@@ -28,6 +109,11 @@
     @apply tracking-[-0.027em] text-[0.9375em];
   }
 
+  /* Keyboard input */
+  kbd {
+    @apply font-mono text-[0.9em] bg-bg-light-highlight px-2 py-1 rounded border border-table-cell-border shadow-sm;
+  }
+
   /* Links */
   a {
     @apply no-underline font-bold text-accent;
@@ -37,14 +123,52 @@
     @apply underline;
   }
 
-  /* Images */
+  /* Images and figures */
   img {
     @apply rounded max-w-full h-auto m-0 mx-auto;
+  }
+
+  figure {
+    @apply my-6 text-center;
+  }
+
+  figcaption {
+    @apply text-[0.9em] mt-2 text-article-date italic;
+  }
+
+  /* Media elements */
+  video,
+  audio {
+    @apply max-w-full my-4 mx-auto block;
+  }
+
+  iframe {
+    @apply max-w-full my-4 mx-auto block border-0;
   }
 
   /* Horizontal rules */
   hr {
     @apply border-none h-px mt-4 bg-table-cell-border;
+  }
+
+  /* Details/summary elements */
+  details {
+    @apply my-4 border border-table-cell-border rounded-md p-3;
+  }
+
+  summary {
+    @apply font-bold cursor-pointer;
+  }
+
+  /* Abbreviations */
+  abbr {
+    @apply no-underline border-b border-dotted border-secondary-accent cursor-help;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply bg-bg-light-highlight rounded-md my-0 mb-[1.5em] p-4 text-blockquote-text leading-relaxed;
+    border-left: 4px solid var(--block-quote-border-color);
   }
 }
 
