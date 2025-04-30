@@ -1,7 +1,8 @@
 const fs = require("fs-extra");
 const path = require("path");
-// Fix for the open error by requiring it correctly
 const open = require("open");
+const { exec } = require("child_process");
+const os = require("os");
 
 // Get the build directory
 const buildDir = path.join(__dirname, "../build");
@@ -269,7 +270,16 @@ const colors = {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>${stylesheetContent}</style>
         <style>
-          /* Simple way to force dark/light mode without depending on media queries */
+          /* Explicit styling for dark/light mode theme variants */
+          html.dark-theme {
+            color-scheme: dark;
+          }
+
+          html.light-theme {
+            color-scheme: light;
+          }
+
+          /* Override any media queries with our explicit theme selection */
           @media (prefers-color-scheme: dark) {
             html.light-theme {
               color-scheme: light !important;
@@ -280,14 +290,6 @@ const colors = {
             html.dark-theme {
               color-scheme: dark !important;
             }
-          }
-
-          html.dark-theme {
-            color-scheme: dark;
-          }
-
-          html.light-theme {
-            color-scheme: light;
           }
         </style>
       </head>
@@ -327,10 +329,17 @@ const colors = {
               '<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-circle-right" class="svg-inline--fa fa-arrow-circle-right fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm-28.9 143.6l75.5 72.4H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h182.6l-75.5 72.4c-9.7 9.3-9.9 24.8-.4 34.3l11 10.9c9.4 9.4 24.6 9.4 33.9 0L404.3 273c9.4-9.4 9.4-24.6 0-33.9L271.6 106.3c-9.4-9.4-24.6-9.4-33.9 0l-11 10.9c-9.5 9.6-9.3 25.1.4 34.4z"></path></svg>';
           }
 
-          // Simple function to switch between dark and light mode
+          // More robust function to switch between dark and light mode
           window.setThemeMode = function(isDark) {
             document.documentElement.className = isDark ? 'dark-theme' : 'light-theme';
           };
+
+          // Listen for messages from parent window
+          window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'themeMode') {
+              window.setThemeMode(event.data.isDark);
+            }
+          });
         </script>
       </body>
       </html>
@@ -347,7 +356,7 @@ const colors = {
         <p class="theme-creator">by ${creator}</p>
       </div>
       <div class="iframe-container">
-        <iframe src="${path.relative(previewDir, iframeHtmlPath)}" title="${displayName} theme preview"></iframe>
+        <iframe src="${path.relative(previewDir, iframeHtmlPath)}" title="${displayName} theme preview" id="iframe-${themeName.toLowerCase().replace(/[^a-z0-9]/g, "-")}"></iframe>
       </div>
       <div class="theme-actions">
         <button onclick="window.open('${path.relative(previewDir, iframeHtmlPath)}', '_blank')">View Full Size</button>
@@ -359,42 +368,73 @@ const colors = {
   previewHtml += `
   </div>
   <script>
-    // Toggle dark mode
-    document.getElementById('toggle-mode').addEventListener('click', function() {
-      document.body.classList.toggle('dark-mode');
-
-      // Update all iframes to use dark mode preference
+    // Apply theme mode to all iframes
+    function applyThemeModeToIframes(isDarkMode) {
       const iframes = document.querySelectorAll('iframe');
-      const isDarkMode = document.body.classList.contains('dark-mode');
 
       iframes.forEach(iframe => {
+        // First try to use the setThemeMode function directly
         try {
           if (iframe.contentWindow && typeof iframe.contentWindow.setThemeMode === 'function') {
             iframe.contentWindow.setThemeMode(isDarkMode);
           }
         } catch (e) {
-          console.error('Could not apply theme mode to iframe:', e);
+          console.log('Could not call setThemeMode directly, trying postMessage:', e);
+        }
+
+        // Also send a message as a fallback approach
+        try {
+          iframe.contentWindow.postMessage({
+            type: 'themeMode',
+            isDark: isDarkMode
+          }, '*');
+        } catch (e) {
+          console.error('Could not post message to iframe:', e);
         }
       });
+    }
+
+    // Toggle dark mode
+    document.getElementById('toggle-mode').addEventListener('click', function() {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+
+      // Apply the theme mode to all iframes
+      applyThemeModeToIframes(isDarkMode);
     });
 
-    // Ensure iframes are properly loaded
+    // Initialize iframes on page load
     window.addEventListener('load', function() {
-      const iframes = document.querySelectorAll('iframe');
+      // Set a timeout to ensure iframes are loaded
+      setTimeout(function() {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        applyThemeModeToIframes(isDarkMode);
+      }, 500);
+    });
 
-      iframes.forEach(iframe => {
-        // Add a load event listener to ensure content is displayed
-        iframe.addEventListener('load', function() {
-          // Initialize iframe with correct mode on load
-          const isDarkMode = document.body.classList.contains('dark-mode');
-          try {
-            if (iframe.contentWindow && typeof iframe.contentWindow.setThemeMode === 'function') {
-              iframe.contentWindow.setThemeMode(isDarkMode);
-            }
-          } catch (e) {
-            console.error('Could not apply initial theme mode to iframe:', e);
+    // Handle iframe load events to set the correct theme
+    document.querySelectorAll('iframe').forEach(iframe => {
+      iframe.addEventListener('load', function() {
+        const isDarkMode = document.body.classList.contains('dark-mode');
+
+        // Try direct method
+        try {
+          if (this.contentWindow && typeof this.contentWindow.setThemeMode === 'function') {
+            this.contentWindow.setThemeMode(isDarkMode);
           }
-        });
+        } catch (e) {
+          console.log('Could not set theme mode on iframe load:', e);
+        }
+
+        // Also use postMessage as fallback
+        try {
+          this.contentWindow.postMessage({
+            type: 'themeMode',
+            isDark: isDarkMode
+          }, '*');
+        } catch (e) {
+          console.error('Could not post message on iframe load:', e);
+        }
       });
     });
   </script>
@@ -408,13 +448,40 @@ const colors = {
 
   // Open the preview HTML in the default browser
   console.log(`Opening preview at ${previewHtmlPath}`);
-  try {
-    await open(previewHtmlPath);
-  } catch (error) {
-    console.error(
-      "Could not open browser automatically. Please open the preview manually:",
-      previewHtmlPath
-    );
+
+  // Use platform-specific approach for opening browser
+  if (os.platform() === "darwin") {
+    // macOS-specific approach
+    try {
+      // Convert file path to URL format
+      const fileUrl = `file://${previewHtmlPath}`;
+      // Use the 'open' command which is native to macOS
+      exec(`open "${fileUrl}"`, (error) => {
+        if (error) {
+          console.error("Could not open browser using macOS native command:", error);
+          // Fallback to the 'open' package
+          open(previewHtmlPath).catch((err) => {
+            console.error(
+              "Could not open browser automatically. Please open the preview manually:",
+              previewHtmlPath
+            );
+          });
+        }
+      });
+    } catch (error) {
+      console.error("Error opening browser:", error);
+      console.log(`Please open the preview manually: ${previewHtmlPath}`);
+    }
+  } else {
+    // For non-macOS platforms, use the 'open' package
+    try {
+      await open(previewHtmlPath);
+    } catch (error) {
+      console.error(
+        "Could not open browser automatically. Please open the preview manually:",
+        previewHtmlPath
+      );
+    }
   }
 }
 
