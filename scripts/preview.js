@@ -173,6 +173,21 @@ async function createPreview() {
     const displayName = nameMatch ? nameMatch[1] : themeName;
     const creator = creatorMatch ? creatorMatch[1] : "Unknown";
 
+    // Load the corresponding theme configuration
+    let themeObj = {};
+    try {
+      const themeConfigPath = path.join(
+        __dirname,
+        "../src/themes",
+        themeName.toLowerCase(),
+        "theme.js"
+      );
+      themeObj = require(themeConfigPath);
+    } catch (error) {
+      console.warn(`Could not load theme configuration for ${themeName}: ${error.message}`);
+      themeObj = { lightMode: {}, darkMode: {} };
+    }
+
     // Create a temporary HTML file for the iframe
     const iframeHtmlPath = path.join(previewDir, `${themeName}.html`);
 
@@ -279,6 +294,19 @@ const colors = {
             color-scheme: light;
           }
 
+          /* Apply the CSS variables based on theme class */
+          html.dark-theme {
+            ${Object.entries(themeObj.darkMode || {})
+              .map(([key, value]) => `${key}: ${value};`)
+              .join("\n            ")}
+          }
+
+          html.light-theme {
+            ${Object.entries(themeObj.lightMode || {})
+              .map(([key, value]) => `${key}: ${value};`)
+              .join("\n            ")}
+          }
+
           /* Override any media queries with our explicit theme selection */
           @media (prefers-color-scheme: dark) {
             html.light-theme {
@@ -332,6 +360,9 @@ const colors = {
           // More robust function to switch between dark and light mode
           window.setThemeMode = function(isDark) {
             document.documentElement.className = isDark ? 'dark-theme' : 'light-theme';
+
+            // For debugging
+            console.log('Theme mode changed to: ' + (isDark ? 'dark' : 'light'));
           };
 
           // Listen for messages from parent window
