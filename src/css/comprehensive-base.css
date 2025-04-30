@@ -156,7 +156,7 @@ hr {
 .articleTitle a:visited,
 .articleTitle h1 {
   color: var(--article-title-color);
-  margin-top: 26px;
+  margin-top: 20px;
   padding-bottom: 12px;
   text-align: center;
   margin: auto;
@@ -668,7 +668,8 @@ a.footnote:hover,
   }
 
   .articleTitle {
-    font-size: 0.7em;
+    font-size: 1em;
+    line-height: 1.1em;
   }
 
   :root {
