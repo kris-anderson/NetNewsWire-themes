@@ -7,7 +7,7 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "start": "gulp",
-    "clean": "rm -rf build/**/*.nnwtheme/stylesheet.css",
+    "clean": "rm -rf build/* preview/*",
     "format": "prettier --write .",
     "lint": "eslint --fix .",
     "preview": "node scripts/preview.js"
