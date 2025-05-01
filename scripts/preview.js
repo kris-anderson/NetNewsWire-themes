@@ -56,7 +56,7 @@ async function createPreview() {
       border-radius: 8px;
       overflow: hidden;
       width: 360px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px #0000001A;
       transition: all 0.3s ease;
     }
     .theme-header {
@@ -130,7 +130,7 @@ async function createPreview() {
     }
     .dark-mode .theme-card {
       border-color: #444;
-      box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+      box-shadow: 0 2px 5px #ffffff1A;
     }
     .dark-mode .theme-header {
       background: #333;

@@ -132,24 +132,10 @@ function buildTheme(theme) {
           console.log(`Built theme: ${themeConfig.name} (with Tailwind)`);
         } catch (error) {
           console.error(`Error processing CSS for theme ${theme}:`, error);
-
-          // Fallback to the non-Tailwind approach if processing fails
-          console.log(`Falling back to standard CSS for theme ${themeConfig.name}`);
-
-          // Read the comprehensive base CSS
-          const comprehensiveBaseCss = fs.readFileSync(
-            path.join(__dirname, "src/css/comprehensive-base.css"),
-            "utf8"
+          // Simply fail the build instead of using the fallback
+          throw new Error(
+            `Failed to process theme ${themeConfig.name} with Tailwind. Please fix the CSS errors.`
           );
-
-          // Replace CSS variables
-          const rootVarsRegex =
-            /:root\s*{[^}]*}(?:\s*@media\s*\([^)]*\)\s*{\s*:root\s*{[^}]*}\s*})?/s;
-          const modifiedCss = comprehensiveBaseCss.replace(rootVarsRegex, cssVars.trim());
-
-          // Write the CSS to the output file
-          fs.writeFileSync(path.join(outputDir, "stylesheet.css"), modifiedCss);
-          console.log(`Built theme (fallback method): ${themeConfig.name}`);
         } finally {
           // Clean up temporary files
           try {
