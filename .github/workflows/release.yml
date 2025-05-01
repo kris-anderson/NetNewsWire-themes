@@ -29,9 +29,10 @@ jobs:
       - name: Create theme zip files
         run: |
           mkdir -p release-assets
-          for theme_dir in build/*.nnwtheme; do
+          cd build
+          for theme_dir in *.nnwtheme; do
             theme_name=$(basename "$theme_dir" .nnwtheme)
-            zip -r "release-assets/${theme_name}.nnwtheme.zip" "$theme_dir"
+            zip -r "../release-assets/${theme_name}.nnwtheme.zip" "$theme_dir"
           done
 
       - name: Create Release
