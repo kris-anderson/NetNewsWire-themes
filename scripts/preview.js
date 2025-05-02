@@ -272,7 +272,7 @@ const colors = {
       <p>Below is a sample image:</p>
       <figure>
         <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzc3NyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMThweCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgZmlsbD0id2hpdGUiPlNhbXBsZSBJbWFnZTwvdGV4dD48L3N2Zz4=" alt="Sample Image" width="200" height="100">
-        <figcaption>A sample image caption</figcaption>
+        <figcaption>A sample image caption that sits directly below the image</figcaption>
       </figure>
     `;
 

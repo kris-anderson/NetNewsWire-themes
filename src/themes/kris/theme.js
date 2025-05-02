@@ -13,7 +13,7 @@ module.exports = {
   // CSS Variables for light mode
   lightMode: {
     "--header-table-border-color": "#00000019",
-    "--header-color": "#333333", // Changed from #0000004D to increase contrast
+    "--header-color": "#0000004D",
     "--body-code-color": "#666666",
     "--system-message-color": "#cbcbcb",
     "--feedlink-color": "#FF00009A",
