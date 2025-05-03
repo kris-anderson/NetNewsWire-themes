@@ -8,17 +8,12 @@
 @layer base {
   /* Base elements */
   body {
-    @apply mx-auto max-w-[44em] break-words leading-relaxed text-text bg-background;
-    margin-top: 20px;
-    margin-bottom: 64px;
-    padding-left: 48px;
-    padding-right: 48px;
-    font-family: -apple-system, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+    @apply font-sans mx-auto mt-5 mb-16 px-12 max-w-[44em] break-words leading-[1.5em] text-text bg-background;
   }
 
   /* Headings */
   h1 {
-    @apply font-bold pb-0 mb-[5px] text-[2em] leading-[1.4em];
+    @apply font-bold pb-0 mb-[5px] text-[2.2em] leading-[1.4em];
   }
 
   h2 {
@@ -84,7 +79,7 @@
   }
 
   li {
-    @apply my-2;
+    @apply my-0;
   }
 
   /* Definition lists */
