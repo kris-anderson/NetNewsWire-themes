@@ -199,7 +199,7 @@
   .articleTitle a:link,
   .articleTitle a:visited,
   .articleTitle h1 {
-    @apply text-article-title mt-[10px] pb-2 text-center mx-auto font-sans;
+    @apply text-article-title mt-[0px] pb-2 text-center mx-auto font-sans;
   }
 
   .articleFeedName {
