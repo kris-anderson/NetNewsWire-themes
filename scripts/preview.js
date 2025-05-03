@@ -491,7 +491,7 @@ const colors = {
         if (error) {
           console.error("Could not open browser using macOS native command:", error);
           // Fallback to the 'open' package
-          open(previewHtmlPath).catch((err) => {
+          open(previewHtmlPath).catch((_err) => {
             console.error(
               "Could not open browser automatically. Please open the preview manually:",
               previewHtmlPath
