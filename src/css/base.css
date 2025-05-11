@@ -293,7 +293,7 @@
   /* iOS specific styles */
   @supports (-webkit-touch-callout: none) {
     body {
-      @apply mt-[3px] mb-5 px-5 text-[1.4em] font-normal;
+      @apply mt-[3px] mb-5 px-5 text-[1.3em] font-normal;
     }
 
     .articleTitle {
